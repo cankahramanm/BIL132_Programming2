@@ -1,5 +1,5 @@
 /*
-	Student name :
+	Student name :Mehmet Can KAHRAMAN
 	Student ID   :
 */
 
@@ -11,7 +11,7 @@ int count_alive_neighbors(char *b, int x, int y)
 {
 	int count = 0;
 
-	/* do stuff with b, x and y */
+	/* do stuff with b, x and y */ // pc de oluşturduğum fonksiyonu taşı ve son kontrolerini yap.
 
 	return count;
 }
@@ -20,7 +20,8 @@ char* evaluate(char *b)
 {
 	char *n = create_board();
 
-	/* do stuff with b and n */
+	/* do stuff with b and n */ /* for ile oluşturduğun matriksi while ile yapmayı dene ve 
+	if elseler yerine switchi dene neden olmuyor son bir gözlemde bulun.*/
 
 	return n;
 }
