@@ -1,6 +1,6 @@
 /*
 	Student name :Mehmet Can KAHRAMAN
-	Student ID   :
+	Student ID   :200008645
 */
 
 #include <stdlib.h>
@@ -9,9 +9,36 @@
 
 int count_alive_neighbors(char *b, int x, int y)
 {
+	FILE *f = fopen(INITIAL_FILE, "r");
 	int count = 0;
+if((b[10*y+x-1])== '1'){
+	count++;
+}
+if((b[10*y+x+1])== '1'){ // Burada if koşullarını teker teker yazmamak için string oluşturup for döngüsünde bitirecektim
+//fakat stringler de pointer ile bir sorunla karşılaştım bu ifadeleri bir değişkene eşitleyemedim.(Tahminim iç içe pointerlardan dolayı olabilir.)
+	count++;
+}
+if((b[10*y+x-11])== '1'){
+	count++;
+}
+if((b[10*y+x+11])== '1'){
+	count++;
+}
+if((b[10*y+x-9])== '1'){
+	count++;
+}
+if((b[10*y+x+9])== '1'){
+	count++;
+}
+if((b[10*y+x-10])== '1'){
+	count++;
+}
+if((b[10*y+x+10])== '1'){
+	count++;
+}
+	
 
-	/* do stuff with b, x and y */ // pc de oluşturduğum fonksiyonu taşı ve son kontrolerini yap.
+	/* do stuff with b, x and y */ 
 
 	return count;
 }
@@ -20,8 +47,47 @@ char* evaluate(char *b)
 {
 	char *n = create_board();
 
-	/* do stuff with b and n */ /* for ile oluşturduğun matriksi while ile yapmayı dene ve 
-	if elseler yerine switchi dene neden olmuyor son bir gözlemde bulun.*/
+	/* do stuff with b and n */ 
+	int i,j,neighbors,matrix;
+
+	for(i=0;i<N;i++){
+	// Matriks yapısını for ile değil while ile yapmaya çalıştım fakat uyum sağlayamadı. Nedenini çözememekle beraber
+	//neden matriks oluştururken for döngüsünün kullanıldığını daha net anlamış oldum 
+	//fakat hala neden while döngüsünde sorun çıkardı bilmiyorum.
+		for(j=0;j<M;j++){
+			matrix = ((i*M) + j);
+				neighbors = count_alive_neighbors(b, j, i);
+			 if(b[matrix] == '0'){
+				if(neighbors == 3){
+					//NEW BORN!!
+					n[matrix] = '1';
+					}
+				else{     //if else yerine switch kullandığımda aynı başarıyı alamadım switch kullanmak istemiştim doğru çalışmadığından ve
+				//  if kadar  kullanışlı olmadığından switch yerine if kullanmak zorunda kaldım.
+					//AS THE SAME
+					n[matrix] = '0';
+					}
+									
+									}
+			 if (b[matrix] == '1'){
+				
+				if(neighbors == 2) {
+					// GO LIVE
+						n[matrix] = '1';
+						}
+				else if(neighbors == 3){
+					n[matrix] = '1';
+					   }
+				else{
+					//DEAD
+					n[matrix] = '0';
+					}
+				
+			
+								 }
+
+				}
+			}
 
 	return n;
 }
