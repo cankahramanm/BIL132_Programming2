@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "gol.h"
 #include "gol.c"
+
 int count_alive_neighbors(char *b, int x, int y)
 {
 	FILE *f = fopen(INITIAL_FILE, "r");
