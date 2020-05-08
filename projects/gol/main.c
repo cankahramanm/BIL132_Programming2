@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "gol.h"
-
+#include "gol.c"
 int count_alive_neighbors(char *b, int x, int y)
 {
 	FILE *f = fopen(INITIAL_FILE, "r");
@@ -14,7 +14,8 @@ int count_alive_neighbors(char *b, int x, int y)
 if((b[10*y+x-1])== '1'){
 	count++;
 }
-if((b[10*y+x+1])== '1'){ // Burada if koşullarını teker teker yazmamak için string oluşturup for döngüsünde bitirecektim
+if((b[10*y+x+1])== '1'){ 
+// Burada if koşullarını teker teker yazmamak için string oluşturup for döngüsünde bitirecektim
 //fakat stringler de pointer ile bir sorunla karşılaştım bu ifadeleri bir değişkene eşitleyemedim.(Tahminim iç içe pointerlardan dolayı olabilir.)
 	count++;
 }
@@ -62,7 +63,8 @@ char* evaluate(char *b)
 					//NEW BORN!!
 					n[matrix] = '1';
 					}
-				else{     //if else yerine switch kullandığımda aynı başarıyı alamadım switch kullanmak istemiştim doğru çalışmadığından ve
+				else{     
+				//if else yerine switch kullandığımda aynı başarıyı alamadım switch kullanmak istemiştim doğru çalışmadığından ve
 				//  if kadar  kullanışlı olmadığından switch yerine if kullanmak zorunda kaldım.
 					//AS THE SAME
 					n[matrix] = '0';
@@ -91,7 +93,7 @@ char* evaluate(char *b)
 
 	return n;
 }
-
+//https://github.com/cankahramanm sizin projeyi forklayarak devamını getirdim.
 int main()
 {
 	int i = 0;
